@@ -10,6 +10,11 @@ class Payment extends Component {
 
   componentDidMount() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) {
+      alert('To place an order, you must add at least 1 item to your cart.');
+      return;
+    }
+    
     let total = 0.00;
     for (let i = 0; i < cart.length; i++) {
       total += cart[i].price * cart[i].quantity
